@@ -16,8 +16,20 @@ services:
     networks:
       - spring-net
 
+  redis:
+    image: redis:7
+    container_name: session-demo-redis
+    ports:
+      - "6379:6379"
+    command: [ "redis-server", "--appendonly", "yes" ]  # 데이터 영속화를 위한 설정
+    volumes:
+      - redis-session-data:/data
+    networks:
+      - spring-net
+
 volumes:
   mysql-session-data:
+  redis-session-data:
 
 networks:
   spring-net:
