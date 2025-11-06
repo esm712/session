@@ -26,7 +26,7 @@ public class SecurityConfig {
         http.httpBasic(AbstractHttpConfigurer::disable); // Basic Auth 안 씀
 
         http.authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/signup", "/auth/login", "/auth/logout").permitAll()
+                .requestMatchers("/user", "/session").permitAll()
                 .anyRequest().authenticated()
         );
 
